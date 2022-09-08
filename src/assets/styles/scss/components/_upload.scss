@@ -1,0 +1,17 @@
+@import "../material.variables";
+@import "../mixins/bi-app/bi-app-ltr";
+@import "../app.variables";
+@import "../mixins";
+
+.round-icon {
+  border: mat-color($primary) 2px solid;
+  border-radius: 100%;
+}
+
+.round-icon-upload {
+  border-color: mat-color($primary, 100);
+}
+
+.dropZoneColorDragMaterial {
+  background-color: mat-color($primary, 200);
+}

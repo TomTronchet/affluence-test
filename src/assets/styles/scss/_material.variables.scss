@@ -1,0 +1,141 @@
+@import '~@angular/material/theming';
+
+
+
+$primary-custom: (
+  50 : #e0eef2,
+  100 : #b3d4de,
+  200 : #80b8c9,
+  300 : #4d9bb3,
+  400 : #2685a2,
+  500 : #007092,
+  600 : #00688a,
+  700 : #005d7f,
+  800 : #005375,
+  900 : #004163,
+  A100 : #93d3ff,
+  A200 : #60beff,
+  A400 : #2da9ff,
+  A700 : #149fff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$accent-custom: (
+  50 : #fff1ea,
+  100 : #ffdccb,
+  200 : #ffc5a8,
+  300 : #ffae85,
+  400 : #ff9c6b,
+  500 : #ff8b51,
+  600 : #ff834a,
+  700 : #ff7840,
+  800 : #ff6e37,
+  900 : #ff5b27,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffded4,
+  A700 : #ffcabb,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
+
+$warn-custom: (
+    50 : #ffeded,
+    100 : #ffd1d1,
+    200 : #ffb2b2,
+    300 : #ff9393,
+    400 : #ff7c7c,
+    500 : #ff6565,
+    600 : #ff5d5d,
+    700 : #ff5353,
+    800 : #ff4949,
+    900 : #ff3737,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffe1e1,
+    A700 : #ffc8c8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+//$primary: mat-palette($mat-teal);
+$primary: mat-palette($primary-custom);
+
+//$accent:  mat-palette($mat-light-blue, A200, A100, A400);
+$accent:  mat-palette($accent-custom);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+
+@include mat-core();
+$config: mat-typography-config(
+    $font-family:   'Roboto',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 40px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(18px, 32px, 500),
+    $subheading-2:  mat-typography-level(14px, 26px, 400),
+    $subheading-1:  mat-typography-level(13px, 22px, 400),
+    $body-2:        mat-typography-level(12px, 22px, 500),
+    $body-1:        mat-typography-level(12px, 18px, 400),
+    $caption:       mat-typography-level(12px, 18px, 400),
+    $button:        mat-typography-level(12px, 12px, 500),
+    $input:         mat-typography-level(inherit, 1.125, 400)
+);
+@include mat-core($config);
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+$dark-background: map-get($dark-theme, background);
+$dark-foreground: map-get($dark-theme, foreground);
+
+// $config: mat-typography-config();

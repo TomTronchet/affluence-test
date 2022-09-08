@@ -1,0 +1,30 @@
+<div class="app mat-typography" [dir]="dir"
+     [ngClass]="{'app-dark': dark, 'boxed': boxed, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar, 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }">
+  <mat-toolbar class="main-header" color="primary">
+    <button (click)="sidemenu.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span fxFlex></span>
+    <button appToggleFullscreen mat-icon-button>
+      <mat-icon>fullscreen</mat-icon>
+    </button>
+    <button [mat-menu-trigger-for]="user" matTooltip="Profil" mat-icon-button class="ml-xs">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #user="matMenu" x-position="before">
+    </mat-menu>
+  </mat-toolbar>
+  <mat-sidenav-container class="app-inner">
+    <mat-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'"
+                 [opened]="!isOver()" (open)="sidePanelOpened = true"
+                 (close)="sidePanelOpened = false" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()"
+                 [perfectScrollbar]="config" [disabled]="mediaMatcher.matches">
+    </mat-sidenav>
+    <div [perfectScrollbar]="config" [disabled]="mediaMatcher.matches">
+      <div class="loading-shade" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,47 @@
+app-commune-table {
+.mat-column-select {
+flex: 5!important;
+}
+.mat-column-oc {
+flex: 5!important;
+}
+.mat-column-commune {
+flex: 24!important;
+}
+.mat-column-codePostal {
+flex: 10!important;
+}
+.mat-column-codeInsee {
+flex: 8!important;
+}
+.mat-column-operateur {
+flex: 8!important;
+}
+.mat-column-dateOC {
+flex: 8!important;
+}
+.mat-column-nbPrisesFibre {
+flex: 8!important;
+place-content: center center!important;
+align-items: center!important;
+}
+.mat-column-nbPrisesFibreDeployees {
+flex: 8!important;
+place-content: center center!important;
+align-items: center!important;
+}
+.mat-column-prisesDeployeesPercent {
+flex: 8!important;
+place-content: center center!important;
+align-items: center!important;
+}
+.mat-column-dateDernierBoitage {
+flex: 8!important;
+}
+.mat-column-adWord {
+flex: 10!important;
+}
+.mat-column-dateRp {
+flex: 10!important;
+}
+}

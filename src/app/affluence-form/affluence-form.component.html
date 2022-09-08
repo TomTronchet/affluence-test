@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title class="mat-text-primary">
+			  Reserver pour le {{date | date: DD/MM/YYYY HH:mm'}}
+			</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<div fxLayout="column" fxFlex="100" fxFlex.gt-sm="40">
+				<mat-form-field fxFlex="100">
+					<input matInput
+				         type="text"
+				         placeholder="Prénom"
+				         formControlName="firstName"
+				         required>
+					<mat-hint align="end">{{form.get('firstName').value?.length}}/50</mat-hint>
+					<mat-error>required</mat-error>
+				</mat-form-field>
+				<mat-form-field fxFlex="100">
+					<input matInput
+				         type="text"
+				         placeholder="Nom"
+				         formControlName="lastName"
+				         required>
+					<mat-hint align="end">{{form.get('lastName').value?.length}}/50</mat-hint>
+					<mat-error>required</mat-error>
+				</mat-form-field>
+				<mat-form-field fxFlex="100">
+					<input matInput
+				         type="text"
+				         placeholder="Email"
+				         formControlName="email"
+				         required>
+					<mat-icon matSuffix>mail</mat-icon>
+					<mat-error>required</mat-error>
+				</mat-form-field>
+				<mat-form-field fxFlex="100">
+					<input matInput
+				       type="text"
+				       placeholder="Tèl"
+				       formControlName="tel">
+					<mat-icon matSuffix>phone</mat-icon>
+					</mat-form-field>
+				<mat-checkbox formControlName="acceptTerm">Accepter les termes d'utilisations</mat-checkbox>
+				<mat-checkbox formControlName="saveInfo">Sauvegarder mon compte</mat-checkbox>
+			</div>
+		</mat-card-content>
+		<mat-card-actions>
+			<div class="py-1" fxFlex="100" fxFlex.gt-sm="40">
+				<button mat-stroked-button type="button" (click)="onBack()">{{'BUTTON.BACK' | translate}}</button>
+				<span fxFlex></span>
+				<button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">{{'BUTTON.SAVE' | translate}}</button>
+			</div>
+		</mat-card-actions>
+	</mat-card>
+</form>

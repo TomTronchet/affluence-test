@@ -1,0 +1,56 @@
+.striped {
+   	.mat-row:nth-child(even){
+          background-color:white;
+          }
+
+   .mat-row:nth-child(odd){
+          /*background: mat-color($background, 'hover');*/
+          background: #F4F4F4FF;
+          }
+}
+
+.mat-header-row{
+  .mat-sort-header-button {
+    color: mat-color($primary);
+  }
+}
+
+
+.link-in-table {
+	margin-top:.5rem;
+	margin-bottom:.5rem;
+}
+
+.link-in-table:hover {
+	text-decoration:underline;
+}
+
+tr.mat-header-row {
+	min-height:36px!important;
+}
+
+tr.mat-row, tr.mat-footer-row {
+  min-height:30px!important;
+  height:auto!important;
+}
+.mat-header-row {
+  min-height:36px!important;
+}
+
+.mat-row, .mat-footer-row {
+  min-height:30px!important;
+  height:auto!important;
+}
+
+.ps__rail-y {
+  z-index:999
+}
+
+.sortable-row-icon {
+  margin-right: 18px;
+}
+.mat-sort-header-container{ justify-content: inherit!important; }
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: none!important;
+}

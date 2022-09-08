@@ -1,0 +1,23 @@
+app-alert-list {
+	.mat-column-read {
+	  flex: 5!important;
+	}
+	.mat-column-date {
+	  flex: 10!important;
+	}
+	.mat-column-type {
+	  flex: 15!important;
+	}
+	.mat-column-objectType {
+	  flex: 15!important;
+	}
+	.mat-column-objectName {
+	  flex: 15!important;
+	}
+	.mat-column-objectRef {
+	  flex: 10!important;
+	}
+	.mat-column-detail {
+	  flex: 30!important;
+	}
+}

@@ -1,0 +1,31 @@
+<div>
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title class="mat-text-primary">
+			  Chercher une disponibilité
+			</mat-card-title>
+		</mat-card-header>
+		<mat-divider></mat-divider>
+		<mat-card-content>
+			<mat-form-field appearance="fill">
+			  <mat-label>Date</mat-label>
+			  <mat-error>Required</mat-error>
+			  <input 
+			  	matInput
+			    required
+			    [formControl]="dateSearch"
+			    type="datetime-local">
+			</mat-form-field>
+		</mat-card-content>
+		<mat-card-actions>
+			<div class="py-1" fxFlex="100">
+			  <button mat-flat-button color="primary" type="button" [disabled]="dateSearch.invalid"
+			          (click)="checkDispo()">{{'BUTTON.SAVE' | translate}}</button>
+
+			</div>
+		</mat-card-actions>
+	</mat-card>
+</div>
+<div *ngIf="displayForm">
+	<app-affluence-form [date]="dateSearch.value" (backEvent)="onClose()"></app-affluence-form>
+</div>
