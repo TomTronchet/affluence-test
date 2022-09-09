@@ -5,11 +5,21 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import * as _ from 'underscore';
 
+export interface User {
+  firstName: string,
+  lastName: string,
+  email: string,
+  tel: string,
+  acceptTerm: boolean,
+  saveInfo: boolean
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AffluenceService {
   jsonHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  user: User;
 
   constructor(private http: HttpClient) {
   }
@@ -28,5 +38,12 @@ export class AffluenceService {
       );
   }
 
+  getUser() {
+    return this.user;
+  }
+
+  setUser(user:User) {
+    this.user = user;
+  }
 
 }

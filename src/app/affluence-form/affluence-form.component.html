@@ -2,7 +2,7 @@
 	<mat-card>
 		<mat-card-header>
 			<mat-card-title class="mat-text-primary">
-			  Reserver pour le {{date | date: DD/MM/YYYY HH:mm'}}
+			  Reserver pour le {{date | date: 'dd/MM/YYYY HH:mm'}}
 			</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
@@ -38,7 +38,7 @@
 					<input matInput
 				       type="text"
 				       placeholder="Tèl"
-				       formControlName="tel">
+				       formControlName="tel" mask="0000000000">
 					<mat-icon matSuffix>phone</mat-icon>
 					</mat-form-field>
 				<mat-checkbox formControlName="acceptTerm">Accepter les termes d'utilisations</mat-checkbox>
@@ -47,9 +47,9 @@
 		</mat-card-content>
 		<mat-card-actions>
 			<div class="py-1" fxFlex="100" fxFlex.gt-sm="40">
-				<button mat-stroked-button type="button" (click)="onBack()">{{'BUTTON.BACK' | translate}}</button>
+				<button mat-stroked-button type="button" (click)="onBack()">RETOUR</button>
 				<span fxFlex></span>
-				<button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">{{'BUTTON.SAVE' | translate}}</button>
+				<button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">RÉSERVER</button>
 			</div>
 		</mat-card-actions>
 	</mat-card>

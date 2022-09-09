@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { AffluenceService } from '../core-service/services/affluence.service';
 
 @Component({
@@ -7,14 +9,11 @@ import { AffluenceService } from '../core-service/services/affluence.service';
   templateUrl: './affluence.component.html',
   styleUrls: ['./affluence.component.css']
 })
-export class AffluenceComponent implements OnInit {
+export class AffluenceComponent {
 
   dateSearch: FormControl = new FormControl(null, Validators.required);
   displayForm = false;
-  constructor(private affluenceService:AffluenceService) {
-  }
-
-  ngOnInit(): void {
+  constructor(private affluenceService:AffluenceService, private _snackBar: MatSnackBar) {
   }
 
   checkDispo() {
@@ -22,14 +21,21 @@ export class AffluenceComponent implements OnInit {
       if (result && result.available) {
         this.displayForm = true;
       } else {
-        // print error
+        this._snackBar.open('Créneau non disponible', 'Fermer', {
+          verticalPosition: 'top',
+        });
         this.displayForm = false;
       }
     })
   }
-  onClose() {
-    // save result if present (saveInfo)
+  onClose(reservationSubmit) {
     this.dateSearch.setValue(null);
+    this.dateSearch.markAsUntouched()
     this.displayForm = false;
+    if (reservationSubmit) {
+     this._snackBar.open('La Reservation a bien été enregistrée', 'Fermer', {
+       verticalPosition: 'top',
+     }); 
+    }
   }
 }

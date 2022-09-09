@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!displayForm else form">
 	<mat-card>
 		<mat-card-header>
 			<mat-card-title class="mat-text-primary">
@@ -20,12 +20,12 @@
 		<mat-card-actions>
 			<div class="py-1" fxFlex="100">
 			  <button mat-flat-button color="primary" type="button" [disabled]="dateSearch.invalid"
-			          (click)="checkDispo()">{{'BUTTON.SAVE' | translate}}</button>
+			          (click)="checkDispo()">VERIFIER LA DISPONIBILITÉ</button>
 
 			</div>
 		</mat-card-actions>
 	</mat-card>
 </div>
-<div *ngIf="displayForm">
-	<app-affluence-form [date]="dateSearch.value" (backEvent)="onClose()"></app-affluence-form>
-</div>
+<ng-template #form>
+	<app-affluence-form [date]="dateSearch.value" (backEvent)="onClose($event)"></app-affluence-form>
+</ng-template>

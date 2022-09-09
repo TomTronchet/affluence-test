@@ -1,18 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AffluenceService } from '../core-service/services/affluence.service';
 
 @Component({
   selector: 'app-affluence-form',
   templateUrl: './affluence-form.component.html',
   styleUrls: ['./affluence-form.component.css']
 })
-export class AffluenceFormComponent implements OnInit {
+export class AffluenceFormComponent {
   form: FormGroup;
-
   @Input('date') date:Date;
-  @Output('backEvent') backEvent = new EventEmitter();;
 
-  constructor(private _fb: FormBuilder) {
+  // true is form submit, false if not
+  @Output('backEvent') backEvent:EventEmitter<boolean> = new EventEmitter();;
+
+  constructor(private _fb: FormBuilder, private affluenceService: AffluenceService) {
     this.form = this._fb.group({
       firstName:[null, Validators.compose([Validators.required, Validators.maxLength(50)])], 
       lastName:[null,Validators.compose([Validators.required, Validators.maxLength(50)])], 
@@ -20,17 +22,21 @@ export class AffluenceFormComponent implements OnInit {
       tel:[null],
       acceptTerm:[false, Validators.requiredTrue],
       saveInfo:[false],
-    })
-  }
-
-  ngOnInit(): void {
+    });
+    let existingUser = this.affluenceService.getUser();
+    if (existingUser) {
+      this.form.reset(existingUser);
+    }
   }
 
   onSave() {
+    if (this.form.get('saveInfo').value) {
+      this.affluenceService.setUser(this.form.value)
+    }
     this.backEvent.emit(true);
   }
+
   onBack() {
-    this.form.reset();
-    this.backEvent.emit(true);
+    this.backEvent.emit(false);
   }
 }
